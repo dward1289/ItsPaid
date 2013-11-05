@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">It\'s Paid</string>
+    <string name="action_settings">Settings</string>
+    <string name="NOB">Enter Bill Name:</string>
+    <string name="AP">Enter Amount Paid: $</string>
+    <string name="TAD">Enter Total Amount Due: $</string>
+    <string name="InstructDate">Select a date:</string>
+    <string name="PIF">Paid in Full:</string>
+    <string name="Y">Yes</string>
+    <string name="N">No</string>
+    <string name="NOBHint">Car Payment</string>
+    <string name="APHint">200.00</string>
+    <string name="TADHint">600.00</string>
+    <string name="save">Save</string>
+    <string name="saved">Saved Bills</string>
+    <string name="about">About</string>
+    <string name="theSurvey">It\'s Paid Feedback</string>
+    
+
+</resources>

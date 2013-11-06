@@ -1,10 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <item android:id="@+id/action_search"
+    <item android:id="@+id/savedBills"
           android:icon="@drawable/listit"
           android:title="@string/saved"
           android:showAsAction="ifRoom"/>
-    <item android:id="@+id/action_compose"
+    <item android:id="@+id/aboutIt"
           android:icon="@drawable/aboutit"
           android:title="@string/about" 
           android:showAsAction="ifRoom"/>

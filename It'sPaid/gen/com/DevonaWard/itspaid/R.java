@@ -8,6 +8,10 @@
 package com.DevonaWard.itspaid;
 
 public final class R {
+    public static final class array {
+        public static final int day_array=0x7f060001;
+        public static final int month_array=0x7f060000;
+    }
     public static final class attr {
     }
     public static final class dimen {
@@ -30,29 +34,34 @@ public final class R {
         public static final int refreshit=0x7f020006;
     }
     public static final class id {
-        public static final int action_compose=0x7f08000f;
-        public static final int action_search=0x7f08000e;
-        public static final int amountPaid=0x7f080001;
-        public static final int billName=0x7f080000;
-        public static final int cancelBtn=0x7f08000b;
-        public static final int daySpin=0x7f080005;
-        public static final int monthSpin=0x7f080004;
-        public static final int paidFull=0x7f080007;
-        public static final int radioNo=0x7f080009;
-        public static final int radioYes=0x7f080008;
-        public static final int refreshBtn=0x7f08000c;
-        public static final int saveBtn=0x7f08000a;
-        public static final int totalDue=0x7f080002;
-        public static final int txtInstruct=0x7f080003;
-        public static final int webview=0x7f08000d;
-        public static final int yearSpin=0x7f080006;
+        public static final int aboutIt=0x7f090013;
+        public static final int amountPaid=0x7f090002;
+        public static final int billName=0x7f090001;
+        public static final int cancelBtn=0x7f09000f;
+        public static final int daySpin=0x7f090006;
+        public static final int list=0x7f09000e;
+        public static final int monthSpin=0x7f090005;
+        public static final int paidFull=0x7f090008;
+        public static final int paidFullTxt=0x7f09000d;
+        public static final int radioGroup=0x7f090009;
+        public static final int radioNo=0x7f09000b;
+        public static final int radioYes=0x7f09000a;
+        public static final int refreshBtn=0x7f090010;
+        public static final int saveBtn=0x7f09000c;
+        public static final int savedBills=0x7f090012;
+        public static final int todayIs=0x7f090000;
+        public static final int totalDue=0x7f090003;
+        public static final int txtInstruct=0x7f090004;
+        public static final int webview=0x7f090011;
+        public static final int yearSpin=0x7f090007;
     }
     public static final class layout {
         public static final int activity_main_page=0x7f030000;
-        public static final int thesurvey_page=0x7f030001;
+        public static final int saved_bills=0x7f030001;
+        public static final int thesurvey_page=0x7f030002;
     }
     public static final class menu {
-        public static final int main_page=0x7f070000;
+        public static final int main_page=0x7f080000;
     }
     public static final class string {
         public static final int AP=0x7f050003;
@@ -97,11 +106,13 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
-        public static final int billFont=0x7f060002;
+        public static final int AppTheme=0x7f070001;
+        public static final int billFont=0x7f070002;
+        public static final int fullFont=0x7f070003;
+        public static final int headFont=0x7f070004;
     }
 }

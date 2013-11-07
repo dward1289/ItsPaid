@@ -66,6 +66,8 @@ public class MainPage extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_page);
 		
+		
+		
 		billName = (EditText)findViewById(R.id.billName);
 		amountPaid = (EditText)findViewById(R.id.amountPaid);
 		totalDue = (EditText)findViewById(R.id.totalDue);	
@@ -127,7 +129,7 @@ public class MainPage extends Activity {
        }else if(noRadio.isChecked()){
     	   paidInFull.setText("$"+decimalFormat.format(thatTotal)+" is due by "+selectedMonth+" "+selectedDate+", "+selectedYear+".");
        }
-		
+
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

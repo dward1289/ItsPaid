@@ -26,34 +26,37 @@ public final class R {
     }
     public static final class drawable {
         public static final int aboutit=0x7f020000;
-        public static final int cancelit=0x7f020001;
-        public static final int greenbkg=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int itspaidlogo=0x7f020004;
-        public static final int listit=0x7f020005;
-        public static final int refreshit=0x7f020006;
+        public static final int bkgrd=0x7f020001;
+        public static final int cancelit=0x7f020002;
+        public static final int greenbkg=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int itspaidlogo=0x7f020005;
+        public static final int listit=0x7f020006;
+        public static final int refreshit=0x7f020007;
     }
     public static final class id {
-        public static final int aboutIt=0x7f090013;
-        public static final int amountPaid=0x7f090002;
+        public static final int aboutIt=0x7f090015;
+        public static final int amountPaid=0x7f090003;
         public static final int billName=0x7f090001;
-        public static final int cancelBtn=0x7f09000f;
-        public static final int daySpin=0x7f090006;
-        public static final int list=0x7f09000e;
-        public static final int monthSpin=0x7f090005;
-        public static final int paidFull=0x7f090008;
-        public static final int paidFullTxt=0x7f09000d;
-        public static final int radioGroup=0x7f090009;
-        public static final int radioNo=0x7f09000b;
-        public static final int radioYes=0x7f09000a;
-        public static final int refreshBtn=0x7f090010;
-        public static final int saveBtn=0x7f09000c;
-        public static final int savedBills=0x7f090012;
-        public static final int todayIs=0x7f090000;
-        public static final int totalDue=0x7f090003;
-        public static final int txtInstruct=0x7f090004;
-        public static final int webview=0x7f090011;
-        public static final int yearSpin=0x7f090007;
+        public static final int cancelBtn=0x7f090011;
+        public static final int daySpin=0x7f090008;
+        public static final int enterAP=0x7f090002;
+        public static final int enterBN=0x7f090000;
+        public static final int enterTAD=0x7f090004;
+        public static final int list=0x7f090010;
+        public static final int monthSpin=0x7f090007;
+        public static final int paidFull=0x7f09000a;
+        public static final int paidFullTxt=0x7f09000e;
+        public static final int radioGroup=0x7f09000b;
+        public static final int radioNo=0x7f09000d;
+        public static final int radioYes=0x7f09000c;
+        public static final int refreshBtn=0x7f090012;
+        public static final int saveBtn=0x7f09000f;
+        public static final int savedBills=0x7f090014;
+        public static final int totalDue=0x7f090005;
+        public static final int txtInstruct=0x7f090006;
+        public static final int webview=0x7f090013;
+        public static final int yearSpin=0x7f090009;
     }
     public static final class layout {
         public static final int activity_main_page=0x7f030000;
@@ -77,11 +80,10 @@ public final class R {
         public static final int about=0x7f05000e;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int cBtn=0x7f050011;
-        public static final int reBtn=0x7f050012;
+        public static final int cBtn=0x7f050010;
+        public static final int reBtn=0x7f050011;
         public static final int save=0x7f05000c;
         public static final int saved=0x7f05000d;
-        public static final int theImage=0x7f050010;
         public static final int theSurvey=0x7f05000f;
     }
     public static final class style {
@@ -111,8 +113,5 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
-        public static final int billFont=0x7f070002;
-        public static final int fullFont=0x7f070003;
-        public static final int headFont=0x7f070004;
     }
 }

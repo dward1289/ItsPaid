@@ -16,7 +16,15 @@
     <string name="save">Save</string>
     <string name="saved">Saved Bills</string>
     <string name="about">About</string>
-    <string name="theSurvey">It\'s Paid Feedback</string>
+    <string name="theSurvey">It\'s Paid Feedback Survey</string>
+    <string name="thelogo">thelogo</string>
+    <string name="PF">Provide Feedback</string>
+    <string name="theV">Version 1.0</string>
+    <string name="theDC">Developer Company: MadGeek</string>
+    <string name="theD">Developer: Devona Ward</string>
+    <string name="theStop">Stop</string>
+    <string name="thePlay">Play</string>
+    <string name="thePause">Pause</string>
     
     <string-array name="month_array">
         

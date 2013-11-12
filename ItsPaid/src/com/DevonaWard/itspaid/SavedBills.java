@@ -10,10 +10,12 @@ import java.io.InputStreamReader;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -119,6 +121,31 @@ public class SavedBills extends Activity {
 		    return ret; 
 		}
 		
+	  @Override
+		public boolean onOptionsItemSelected(MenuItem item) {
+		    // Handle presses on the action bar items
+		    switch (item.getItemId()) {
+		        case R.id.savedBills:
+		        	openSaved();
+		            return true;
+		        case R.id.aboutIt:
+		            openAbout();
+		            return true;
+		        default:
+		            return super.onOptionsItemSelected(item);
+		    }
+		}
+
+		public void openSaved(){
+			Intent savedIntent = new Intent(this, SavedBills.class);
+		    startActivity(savedIntent);
+		}
+		
+		public void openAbout(){
+			Intent aboutIntent = new Intent(this, AboutPage.class);
+			startActivity(aboutIntent);
+		}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

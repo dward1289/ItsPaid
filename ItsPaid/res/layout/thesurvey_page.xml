@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
     
     <LinearLayout
         android:layout_width="wrap_content"
@@ -11,29 +11,39 @@
 
         <ImageButton
             android:id="@+id/cancelBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bkgrd"
             android:contentDescription="@+string/cBtn"
-            android:src="@drawable/cancelit" 
-            android:background="#8fbc8f"/>
+            android:src="@drawable/acancel"
+            android:onClick="onCancel" />
 
         <TextView
-            android:layout_width="320dp"
-            android:layout_height="fill_parent"
-            android:background="#8fbc8f"
+            android:id="@+id/theText"
+            android:layout_width="283dp"
+            android:layout_height="47dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bkgrd"
             android:gravity="center"
-            android:textSize="20sp"
-            android:text="@string/theSurvey" />
+            android:text="@string/theSurvey"
+            android:textSize="20sp" />
 
         <ImageButton
             android:id="@+id/refreshBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bkgrd"
             android:contentDescription="@+string/reBtn"
-            android:src="@drawable/refreshit"
-            android:background="#8fbc8f" />
+            android:src="@drawable/arefresh" 
+            android:onClick="onRefresh"/>
 
     </LinearLayout>
+    
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
     
     <WebView
     android:id="@+id/webview"

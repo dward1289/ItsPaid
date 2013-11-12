@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical" >
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="184dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10sp" />
+
+<LinearLayout 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="center" >
+    
+    <ImageButton
+        android:id="@+id/playIt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/thePlay"
+        android:src="@drawable/theplay" 
+        android:onClick="playIt"/>
+
+    <ImageButton
+        android:id="@+id/pauseIt"
+        android:src="@drawable/thepause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/thePause"
+        android:onClick="pauseIt" />
+
+    <ImageButton
+        android:id="@+id/stopIt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/theStop"
+        android:src="@drawable/thestop"
+        android:onClick="stopIt" />
+
+</LinearLayout>
+
+    <TextView
+        android:id="@+id/txtAN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:id="@+id/txtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/theV"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:id="@+id/txtDC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/theDC" 
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:id="@+id/txtD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/theD" 
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#ffffff"/>
+
+    <Button
+        android:id="@+id/pfBtn"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/PF"
+        android:onClick="onClick"/>
+
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/thelogo"
+        android:src="@drawable/mglogo" />
+
+</LinearLayout>

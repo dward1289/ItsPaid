@@ -209,7 +209,6 @@ public class MainPage extends Activity {
 	    }
 	}
 	
-	//Data collected from user will be bundled here.
 	public void openSaved(){
 		Intent savedIntent = new Intent(this, SavedBills.class);
 	    startActivity(savedIntent);

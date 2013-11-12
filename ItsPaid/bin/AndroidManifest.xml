@@ -36,6 +36,12 @@
   		android:label="@string/app_name"
   		android:parentActivityName="MainPage" >
 		</activity> 
+		
+        <activity
+  		android:name="SurveyPage"
+  		android:label="@string/app_name"
+  		android:parentActivityName="MainPage" >
+		</activity> 
     </application>
 
 </manifest>

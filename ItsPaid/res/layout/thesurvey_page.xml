@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/bkgrd"
+    >
     
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
@@ -13,16 +15,18 @@
             android:id="@+id/cancelBtn"
             android:layout_width="50dp"
             android:layout_height="match_parent"
+            android:layout_gravity="left"
             android:background="@drawable/bkgrd"
             android:contentDescription="@+string/cBtn"
-            android:src="@drawable/acancel"
-            android:onClick="onCancel" />
+            android:onClick="onCancel"
+            android:src="@drawable/acancel" />
 
         <TextView
             android:id="@+id/theText"
-            android:layout_width="283dp"
+            android:layout_width="0dp"
             android:layout_height="47dp"
             android:layout_gravity="center_vertical"
+            android:layout_weight="0.1"
             android:background="@drawable/bkgrd"
             android:gravity="center"
             android:text="@string/theSurvey"
@@ -34,9 +38,8 @@
             android:layout_height="match_parent"
             android:background="@drawable/bkgrd"
             android:contentDescription="@+string/reBtn"
-            android:src="@drawable/arefresh" 
-            android:onClick="onRefresh"/>
-
+            android:onClick="onRefresh"
+            android:src="@drawable/arefresh" />
     </LinearLayout>
     
     <ProgressBar

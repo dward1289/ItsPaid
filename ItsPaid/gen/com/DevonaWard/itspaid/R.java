@@ -38,10 +38,10 @@ public final class R {
         public static final int thestop=0x7f02000a;
     }
     public static final class id {
-        public static final int aboutIt=0x7f090020;
+        public static final int aboutIt=0x7f09001d;
         public static final int amountPaid=0x7f090003;
         public static final int billName=0x7f090001;
-        public static final int cancelBtn=0x7f09001a;
+        public static final int cancelBtn=0x7f090017;
         public static final int daySpin=0x7f090008;
         public static final int enterAP=0x7f090002;
         public static final int enterBN=0x7f090000;
@@ -50,26 +50,23 @@ public final class R {
         public static final int monthSpin=0x7f090007;
         public static final int paidFull=0x7f09000a;
         public static final int paidFullTxt=0x7f09000e;
-        public static final int pauseIt=0x7f090013;
-        public static final int pfBtn=0x7f090019;
-        public static final int playIt=0x7f090012;
-        public static final int progressBar=0x7f09001d;
+        public static final int pfBtn=0x7f090016;
+        public static final int progressBar=0x7f09001a;
         public static final int radioGroup=0x7f09000b;
         public static final int radioNo=0x7f09000d;
         public static final int radioYes=0x7f09000c;
-        public static final int refreshBtn=0x7f09001c;
+        public static final int refreshBtn=0x7f090019;
         public static final int saveBtn=0x7f09000f;
-        public static final int savedBills=0x7f09001f;
-        public static final int stopIt=0x7f090014;
-        public static final int theText=0x7f09001b;
+        public static final int savedBills=0x7f09001c;
+        public static final int theText=0x7f090018;
         public static final int totalDue=0x7f090005;
-        public static final int txtAN=0x7f090015;
-        public static final int txtD=0x7f090018;
-        public static final int txtDC=0x7f090017;
+        public static final int txtAN=0x7f090012;
+        public static final int txtD=0x7f090015;
+        public static final int txtDC=0x7f090014;
         public static final int txtInstruct=0x7f090006;
-        public static final int txtV=0x7f090016;
+        public static final int txtV=0x7f090013;
         public static final int videoView=0x7f090011;
-        public static final int webview=0x7f09001e;
+        public static final int webview=0x7f09001b;
         public static final int yearSpin=0x7f090009;
     }
     public static final class layout {

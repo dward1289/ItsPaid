@@ -11,7 +11,9 @@ import java.util.Calendar;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.Menu;
@@ -31,6 +33,7 @@ public class MainPage extends Activity {
 	EditText amountPaid;
 	EditText totalDue;
 	//Radio buttons
+	RadioGroup RG;
 	RadioButton yesRadio;
    	RadioButton noRadio;
 	String radioName;
@@ -141,53 +144,98 @@ public class MainPage extends Activity {
 	}
 
 	public void saveIt(View v){
-		nameofBill = (String) billName.getText().toString();
-		paidAmount = (String) amountPaid.getText().toString();
-		dueAmount = (String) totalDue.getText().toString();
-		
-		thatPaid = Double.parseDouble(paidAmount);
-		thatOwed = Double.parseDouble(dueAmount);
-		thatTotal = thatOwed - thatPaid;
-		
-		decimalFormat = new DecimalFormat("###.##");
-		selectedMonth = String.valueOf(monthSpinner.getSelectedItem());
-		selectedDate = String.valueOf(daySpinner.getSelectedItem());
-		selectedYear = String.valueOf(yearSpinner.getSelectedItem());
-
-		
-       if(yesRadio.isChecked()){
-    	   paidInFull.setText("Paid in full on "+selectedMonth+" "+selectedDate+", "+selectedYear+".");
-    	   
-       }else if(noRadio.isChecked()){
-    	   paidInFull.setText("$"+decimalFormat.format(thatTotal)+" is due by "+selectedMonth+" "+selectedDate+", "+selectedYear+".");
-       }
-
-       //Save the data
-       fileName = nameofBill+"\n"+"Amount Paid: $"+thatPaid+"\n"+paidInFull.getText().toString();			
-       content = nameofBill+"\n"+"Amount Paid: $"+thatPaid+"\n"+paidInFull.getText().toString();
-       
-       FileOutputStream fos;
-       try {
-        fos = openFileOutput(fileName, Context.MODE_PRIVATE);
-        fos.write(content.getBytes());
-        fos.close();
-       
-        //Show that data was saved
-        Toast.makeText(
-          MainPage.this,
-          "Bill Has Been Saved",
-          Toast.LENGTH_LONG).show();
-       
-       } catch (FileNotFoundException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-       } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-       }
-      
+	    
+		getTheData();
       };
 
+      public void getTheData(){
+    	  decimalFormat = new DecimalFormat("###.##");
+  		selectedMonth = String.valueOf(monthSpinner.getSelectedItem());
+  		selectedDate = String.valueOf(daySpinner.getSelectedItem());
+  		selectedYear = String.valueOf(yearSpinner.getSelectedItem());
+
+         if(billName.getText() != null){
+      	   nameofBill = (String) billName.getText().toString();
+         }else{
+      	   new AlertDialog.Builder(this)
+             .setTitle("It's Paid")
+             .setMessage("Please enter all information.")
+             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                 public void onClick(DialogInterface dialog, int which) { 
+                 }
+         	     })
+         	     .show();
+         }
+      	   
+         if(amountPaid.getText() != null){
+      		paidAmount = (String) amountPaid.getText().toString();
+      	   }else{
+      		   new AlertDialog.Builder(this)
+                 .setTitle("It's Paid")
+                 .setMessage("Please enter all information.")
+                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                     public void onClick(DialogInterface dialog, int which) { 
+                     }
+             	     })
+             	     .show();
+             }
+      		   
+         if(totalDue.getText() !=null){
+      	   dueAmount = (String)totalDue.getText().toString();
+      		   }else{
+      			   new AlertDialog.Builder(this)
+      	           .setTitle("It's Paid")
+      	           .setMessage("Please enter all information.")
+      	           .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+      	               public void onClick(DialogInterface dialog, int which) { 
+      	               }
+      	       	     })
+      	       	     .show();
+      	       }   			  
+      					   
+         if(yesRadio.isChecked()){
+      	   paidInFull.setText("Paid in full on "+selectedMonth+" "+selectedDate+", "+selectedYear+".");   
+      	   thatPaid = Double.parseDouble(paidAmount);
+        		thatOwed = Double.parseDouble(dueAmount);
+        		thatTotal = thatOwed - thatPaid;
+        		}
+         else if(noRadio.isChecked()){
+      	   paidInFull.setText("$"+decimalFormat.format(thatTotal)+" is due by "+selectedMonth+" "+selectedDate+", "+selectedYear+".");
+      	   
+      	thatPaid = Double.parseDouble(paidAmount);
+     		thatOwed = Double.parseDouble(dueAmount);
+     		thatTotal = thatOwed - thatPaid;
+     		}
+         savedtheData(); 
+         
+         
+      }
+      public void savedtheData(){
+    	//Save the data
+          fileName = nameofBill+"\n"+"Amount Paid: $"+thatPaid+"\n"+paidInFull.getText().toString();			
+          content = nameofBill+"\n"+"Amount Paid: $"+thatPaid+"\n"+paidInFull.getText().toString();
+          
+          FileOutputStream fos;
+          try {
+           fos = openFileOutput(fileName, Context.MODE_PRIVATE);
+           fos.write(content.getBytes());
+           fos.close();
+          
+           //Show that data was saved
+           Toast.makeText(
+             MainPage.this,
+             "Bill Has Been Saved",
+             Toast.LENGTH_LONG).show();
+          
+          } catch (FileNotFoundException e) {
+           // TODO Auto-generated catch block
+           e.printStackTrace();
+          } catch (IOException e) {
+           // TODO Auto-generated catch block
+           e.printStackTrace();
+          }
+      }
+      
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

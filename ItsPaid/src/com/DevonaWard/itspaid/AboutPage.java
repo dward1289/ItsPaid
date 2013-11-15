@@ -7,9 +7,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
-import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -50,26 +51,26 @@ public class AboutPage extends Activity {
 			//YouTube video link
 			String SrcPath = "rtsp://r4---sn-p5qlsu7r.c.youtube.com/CiILENy73wIaGQmiY3ToNfBlgBMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp";
 			vidView.setVideoURI(Uri.parse(SrcPath));
-		    vidView.setMediaController(new MediaController(this));
-	        vidView.requestFocus();
+	        vidView.requestFocus(); 
+	        vidView.start();
+	        
+	        vidView.setOnTouchListener(new OnTouchListener() {
+	            
+	            public boolean onTouch(View v, MotionEvent event) {
+
+	                if(vidView.isPlaying())
+	                {
+	                    vidView.pause();
+	                }
+	                else
+	                {
+	                    vidView.start();
+	                }
+	                return true;
+	            }
+	        });
+		}
 			
-		}
-		
-		//Play video
-		public void playIt(View v){
-			vidView.start();
-		}
-		
-		//Pause video
-		public void pauseIt(View v){
-			vidView.pause();
-		}
-		
-		//Stop video
-		public void stopIt(View v){
-			vidView.stopPlayback();
-		}
-		
 		//Display survey
 		public void onClick(View v){
 			Intent surveyIntent = new Intent(this, SurveyPage.class);

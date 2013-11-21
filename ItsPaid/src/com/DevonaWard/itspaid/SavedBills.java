@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 
 
 
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -44,6 +46,18 @@ public class SavedBills extends Activity {
 		listView = (ListView) findViewById(R.id.list);
 
 		SavedFiles = getApplicationContext().fileList();
+		
+		if(SavedFiles.length == 0){
+			new AlertDialog.Builder(this)
+		    .setTitle("It's Paid")
+		    .setMessage("Saved Bills list is empty. Tap the plus button to add a bill to the list.")
+		    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+		        public void onClick(DialogInterface dialog, int which) { 
+		    		
+		        }
+		     })
+		     .show();
+		}
 
 		ShowSavedFiles();
 			
@@ -105,8 +119,13 @@ public class SavedBills extends Activity {
 		        }
 		     })
 		    .setNeutralButton("Will Be Paid", new DialogInterface.OnClickListener() {
-		        public void onClick(DialogInterface dialog, int which) { 
-		        	theView.setBackgroundColor(Color.RED);
+		        @SuppressLint("SimpleDateFormat")
+				public void onClick(DialogInterface dialog, int which) { 
+		        	theView.setBackgroundColor(Color.RED);	  
+		        	
+		        	
+		        	
+		        	
 		        }
 		        
 		     })
@@ -121,12 +140,13 @@ public class SavedBills extends Activity {
 		    return ret; 
 		}
 		
+	  
 	  @Override
 		public boolean onOptionsItemSelected(MenuItem item) {
 		    // Handle presses on the action bar items
 		    switch (item.getItemId()) {
-		        case R.id.savedBills:
-		        	openSaved();
+		        case R.id.addBills:
+		        	openAdd();
 		            return true;
 		        case R.id.aboutIt:
 		            openAbout();
@@ -136,9 +156,9 @@ public class SavedBills extends Activity {
 		    }
 		}
 
-		public void openSaved(){
-			Intent savedIntent = new Intent(this, SavedBills.class);
-		    startActivity(savedIntent);
+		public void openAdd(){
+			Intent mainIntent = new Intent(this, MainPage.class);
+			startActivity(mainIntent);
 		}
 		
 		public void openAbout(){
@@ -149,7 +169,7 @@ public class SavedBills extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main_page, menu);
+		getMenuInflater().inflate(R.menu.add_menu, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 	

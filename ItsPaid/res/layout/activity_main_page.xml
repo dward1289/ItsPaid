@@ -81,71 +81,40 @@
     </LinearLayout>
 
     <LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginBottom="20dp" >
-    
-    <TextView
-        android:id="@+id/txtInstruct"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-         android:layout_marginLeft="10dp"
-        android:text="@string/InstructDate"
-        android:textSize="18sp"/>
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal" >
 
-    <Spinner
-        android:id="@+id/monthSpin"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:entries="@array/month_array"/>
+        <TextView
+            android:id="@+id/txtInstruct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/InstructDate"
+            android:textSize="18sp" />
 
-    <Spinner
-        android:id="@+id/daySpin"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:entries="@array/day_array" />
+        <TextView
+            android:id="@+id/dateIt"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="90dp"
+            android:text="@string/hintDate"
+            android:textSize="18sp" />
 
-    <Spinner
-        android:id="@+id/yearSpin"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content" />
-
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:contentDescription="@string/theDate"
+            android:cropToPadding="true"
+            android:onClick="selectDate"
+            android:src="@drawable/clockit" />
     </LinearLayout>
     
-	<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal" 
-    android:layout_marginBottom="20dp">
 
-    <TextView
-        android:id="@+id/paidFull"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         android:layout_marginLeft="10dp"
-        android:text="@string/PIF"
-        android:textSize="18sp"/>
-
-    <RadioGroup
-    android:id="@+id/radioGroup"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" 
-    android:orientation="horizontal">
-    
-    <RadioButton
-        android:id="@+id/radioYes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Y" />
-
-    <RadioButton
-        android:id="@+id/radioNo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/N" />
-    </RadioGroup>
-	</LinearLayout>
 
 	<TextView
 	    android:id="@+id/paidFullTxt"

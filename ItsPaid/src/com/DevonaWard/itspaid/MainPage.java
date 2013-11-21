@@ -5,13 +5,21 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 
+
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,11 +27,8 @@ import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,31 +37,14 @@ public class MainPage extends Activity {
 	EditText billName;
 	EditText amountPaid;
 	EditText totalDue;
-	//Radio buttons
-	RadioGroup RG;
-	RadioButton yesRadio;
-   	RadioButton noRadio;
-	String radioName;
 	//Get user input to string
 	String nameofBill;
 	String paidAmount;
 	String dueAmount;
-	//Get radio buttons to string
-	RadioGroup radioSelectGroup;
-	String selectYes;
-	String selectNo;
 	//Calendar info
 	Calendar calendar;
-	int thisYear;
-	ArrayList<String> listYear = new ArrayList<String>();
-	//Spinners
-	Spinner yearSpinner;
-	Spinner monthSpinner;
-	Spinner daySpinner;
-	//Spinner values
-	String selectedMonth;
+	//Date Value
 	String selectedDate;
-	String selectedYear;
 	//Math for money
 	double thatPaid;
 	double thatOwed;
@@ -69,6 +57,7 @@ public class MainPage extends Activity {
 	TextView TAD;
 	TextView SAD;
 	TextView PIF;
+	TextView dateSel;
 	//Save Data
 	String fileName;
 	String content;
@@ -76,6 +65,9 @@ public class MainPage extends Activity {
 	String content3;
 	//Font
 	Typeface font;
+	int savedCount;
+	
+	
 	
 	@SuppressLint("SimpleDateFormat")
 	@Override
@@ -88,6 +80,9 @@ public class MainPage extends Activity {
 		ENB = (TextView)findViewById(R.id.enterBN);
 		ENB.setTypeface(font);
 		
+		dateSel = (TextView)findViewById(R.id.dateIt);
+		dateSel.setTypeface(font);
+		
 		AP = (TextView)findViewById(R.id.enterAP);
 		AP.setTypeface(font);
 		
@@ -97,9 +92,6 @@ public class MainPage extends Activity {
 		SAD = (TextView)findViewById(R.id.txtInstruct);
 		SAD.setTypeface(font);
 		
-		PIF = (TextView)findViewById(R.id.paidFull);
-		PIF.setTypeface(font);
-		
 		billName = (EditText)findViewById(R.id.billName);
 		billName.setTypeface(font);
 		
@@ -108,108 +100,120 @@ public class MainPage extends Activity {
 		
 		totalDue = (EditText)findViewById(R.id.totalDue);
 		totalDue.setTypeface(font);
-
-		yesRadio = (RadioButton)findViewById(R.id.radioYes);
-		yesRadio.setTypeface(font);
-	   	
-		noRadio = (RadioButton)findViewById(R.id.radioNo);
-	   	noRadio.setTypeface(font);
 		
 		paidInFull = (TextView)findViewById(R.id.paidFullTxt);
-		paidInFull.setTypeface(font);
-		
-		monthSpinner = (Spinner) findViewById( R.id.monthSpin);
-		daySpinner = (Spinner) findViewById( R.id.daySpin);
-		
-		
-		calendar = Calendar.getInstance();
-		thisYear = calendar.get(Calendar.YEAR);
-	
-		//Populates the spinner for years until 2099
-		for(int y=0; y<=86; y++){
-			
-			int years = thisYear + y;
-			String totalYears = Integer.toString(years);
-			listYear.add(totalYears);			
-		}
-		
-		//Add years to the year spinner
-		yearSpinner = new Spinner(this);
-	    ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
-	            this, android.R.layout.simple_spinner_item, listYear);
-	    spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
-
-	    yearSpinner = (Spinner) findViewById( R.id.yearSpin);
-	    yearSpinner.setAdapter(spinnerArrayAdapter);
+		paidInFull.setTypeface(font);		
 	}
 
+	//Date picker created
+	 public void selectDate(View view) {
+   	  	DialogFragment newFragment = new SelectDateFragment();
+   	  	newFragment.show(getFragmentManager(), "DatePicker");
+   	  }
+   	  
+	 //Display Date in text view
+	 public void populateSetDate(int year, int month, int day) {
+   	  	dateSel.setText(month+"-"+day+"-"+year);
+   	  }
+	 
+	 //Get date from date picker
+   	  @SuppressLint("ValidFragment")
+	  public class SelectDateFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+   		  @Override
+   		  public Dialog onCreateDialog(Bundle savedInstanceState) {
+   			  final Calendar calendar = Calendar.getInstance();
+   			  int yy = calendar.get(Calendar.YEAR);
+   			  int mm = calendar.get(Calendar.MONTH);
+   			  int dd = calendar.get(Calendar.DAY_OF_MONTH);
+   			  return new DatePickerDialog(getActivity(), this, yy, mm, dd);
+   	  }
+   	   
+   		  public void onDateSet(DatePicker view, int yy, int mm, int dd) {
+   			  populateSetDate(yy, mm+1, dd);
+   		  }
+   	  }
+   	  
 	public void saveIt(View v){
 	    
 		getTheData();
       };
 
       public void getTheData(){
-    	  decimalFormat = new DecimalFormat("###.##");
-  		selectedMonth = String.valueOf(monthSpinner.getSelectedItem());
-  		selectedDate = String.valueOf(daySpinner.getSelectedItem());
-  		selectedYear = String.valueOf(yearSpinner.getSelectedItem());
+    	decimalFormat = new DecimalFormat("###.##");
 
-         if(billName.getText() != null){
-      	   nameofBill = (String) billName.getText().toString();
-         }else{
-      	   new AlertDialog.Builder(this)
+         if(billName.getText().toString().trim().equals("")){
+        	 new AlertDialog.Builder(this)
              .setTitle("It's Paid")
-             .setMessage("Please enter all information.")
+             .setMessage("Please enter bill name.")
              .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                  public void onClick(DialogInterface dialog, int which) { 
                  }
          	     })
          	     .show();
+      	   
+         }else{
+        	 nameofBill = (String) billName.getText().toString();
          }
       	   
-         if(amountPaid.getText() != null){
-      		paidAmount = (String) amountPaid.getText().toString();
+         if(amountPaid.getText().toString().trim().equals("")){
+        	 new AlertDialog.Builder(this)
+             .setTitle("It's Paid")
+             .setMessage("Please enter amount paid.")
+             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                 public void onClick(DialogInterface dialog, int which) { 
+                 }
+         	     })
+         	     .show();
+      		
       	   }else{
-      		   new AlertDialog.Builder(this)
-                 .setTitle("It's Paid")
-                 .setMessage("Please enter all information.")
-                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                     public void onClick(DialogInterface dialog, int which) { 
-                     }
-             	     })
-             	     .show();
+      		 paidAmount = (String) amountPaid.getText().toString();     		 
              }
       		   
-         if(totalDue.getText() !=null){
-      	   dueAmount = (String)totalDue.getText().toString();
-      		   }else{
-      			   new AlertDialog.Builder(this)
-      	           .setTitle("It's Paid")
-      	           .setMessage("Please enter all information.")
-      	           .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-      	               public void onClick(DialogInterface dialog, int which) { 
-      	               }
-      	       	     })
-      	       	     .show();
-      	       }   			  
-      					   
-         if(yesRadio.isChecked()){
-      	   paidInFull.setText("Paid in full on "+selectedMonth+" "+selectedDate+", "+selectedYear+".");   
-      	   thatPaid = Double.parseDouble(paidAmount);
-        		thatOwed = Double.parseDouble(dueAmount);
-        		thatTotal = thatOwed - thatPaid;
-        		}
-         else if(noRadio.isChecked()){
-      	   paidInFull.setText("$"+decimalFormat.format(thatTotal)+" is due by "+selectedMonth+" "+selectedDate+", "+selectedYear+".");
+         if(totalDue.getText().toString().trim().equals("")){
+        	 new AlertDialog.Builder(this)
+	           .setTitle("It's Paid")
+	           .setMessage("Please enter total amount due.")
+	           .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+	               public void onClick(DialogInterface dialog, int which) { 
+	               }
+	       	     })
+	       	     .show();
       	   
-      	thatPaid = Double.parseDouble(paidAmount);
+      		   }else{
+      			 dueAmount = (String)totalDue.getText().toString();
+      			 
+      	       }   			  
+      			
+         if(dateSel.getText().toString().trim().equals("")){
+        	 new AlertDialog.Builder(this)
+             .setTitle("It's Paid")
+             .setMessage("Please select a date.")
+             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                 public void onClick(DialogInterface dialog, int which) { 
+                 }
+         	     })
+         	     .show();
+      	   
+         }else{
+  			 selectedDate = (String)dateSel.getText().toString();
+	       }
+         
+         
+        	thatPaid = Double.parseDouble(paidAmount);
      		thatOwed = Double.parseDouble(dueAmount);
      		thatTotal = thatOwed - thatPaid;
-     		}
-         savedtheData(); 
-         
-         
+     		if(thatTotal == 0){
+      	   paidInFull.setText("Paid in full on "+selectedDate);   
+        		savedtheData(); 
+        		theNotification();
+     		}else{ 			
+          			paidInFull.setText("$"+decimalFormat.format(thatTotal)+" is due by "+selectedDate);   
+             		savedtheData();
+             		theNotification();
+          		}     		       
       }
+      
+      
       public void savedtheData(){
     	//Save the data
           fileName = nameofBill+"\n"+"Amount Paid: $"+thatPaid+"\n"+paidInFull.getText().toString();			
@@ -235,6 +239,39 @@ public class MainPage extends Activity {
            e.printStackTrace();
           }
       }
+      
+    //Notifies user of the number of bills pending.
+	public void theNotification(){
+  		    //prepare intent which is triggered if the notification is selected
+    	    Intent intent = new Intent(this, SavedBills.class);    	    
+    		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+    		//Notification sound
+    		Uri theSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+    		
+    		savedCount = getApplicationContext().fileList().length;
+    		//Vibration pattern
+    		long[] vibration = { 0, 500, 250, 500 };
+    		
+    		// build notification
+    		Notification notification  = new Notification.Builder(this)
+    		
+    		        .setContentTitle("It's Paid")
+    		        .setContentText("You now have a total of " +savedCount + " bills saved.")
+    		        .setSmallIcon(R.drawable.ic_launcher)
+    		        .setContentIntent(pendingIntent)
+    		        .setSound(theSound)
+    		        .setVibrate(vibration)
+    		        .setAutoCancel(true)
+    		        .build();
+    		    
+    		  
+    		NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+    		//Display notification
+    		notificationManager.notify(0, notification);
+  	  }
+  
       
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

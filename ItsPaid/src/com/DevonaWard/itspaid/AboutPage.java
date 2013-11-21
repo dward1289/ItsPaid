@@ -1,8 +1,13 @@
 package com.DevonaWard.itspaid;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -26,6 +32,11 @@ public class AboutPage extends Activity {
 	Button PFBtn;
 	//VideoView
 	VideoView vidView;
+	//Internet stuff
+	ConnectivityManager connectivityManager;
+	NetworkInfo networkInfo;
+	ImageButton playButton;
+
 	
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +58,14 @@ public class AboutPage extends Activity {
 			PFBtn = (Button)findViewById(R.id.pfBtn);
 			
 			vidView = (VideoView) findViewById(R.id.videoView);
-				
+			
+			playButton = (ImageButton)findViewById(R.id.playBtn);
+			
 			//YouTube video link
-			String SrcPath = "rtsp://r4---sn-p5qlsu7r.c.youtube.com/CiILENy73wIaGQmiY3ToNfBlgBMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp";
+			String SrcPath = "android.resource://" + getPackageName() + "/" + R.raw.tutorial;
+			
 			vidView.setVideoURI(Uri.parse(SrcPath));
-	        vidView.requestFocus(); 
-	        vidView.start();
-	        
+	        vidView.requestFocus(); 	        
 	        vidView.setOnTouchListener(new OnTouchListener() {
 	            
 	            public boolean onTouch(View v, MotionEvent event) {
@@ -73,9 +85,35 @@ public class AboutPage extends Activity {
 			
 		//Display survey
 		public void onClick(View v){
-			Intent surveyIntent = new Intent(this, SurveyPage.class);
-			startActivity(surveyIntent);
+			checkConnection();
 		}
+		
+		public void playIt(View v){
+			playButton.setVisibility(View.GONE);
+			vidView.start();
+			
+		}
+		
+		private boolean checkConnection() {
+			  connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+			  networkInfo = connectivityManager.getActiveNetworkInfo();
+			  if (networkInfo == null) {
+				  new AlertDialog.Builder(this)
+				    .setTitle("About")
+				    .setMessage("You will need an internet connection. Please connect to a network.")
+				    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+				        public void onClick(DialogInterface dialog, int which) { 
+				    		
+				        }
+				     })
+				     .show();
+			   return false;
+			  } else{
+				Intent surveyIntent = new Intent(this, SurveyPage.class);
+				startActivity(surveyIntent);
+			    }
+			   return true;
+			 }
 		
 		@Override
 		public boolean onOptionsItemSelected(MenuItem item) {
@@ -98,8 +136,15 @@ public class AboutPage extends Activity {
 		}
 		
 		public void openAbout(){
-			Intent aboutIntent = new Intent(this, AboutPage.class);
-			startActivity(aboutIntent);
+			new AlertDialog.Builder(this)
+		    .setTitle("About")
+		    .setMessage("You are currently viewing the application info.")
+		    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+		        public void onClick(DialogInterface dialog, int which) { 
+		    		
+		        }
+		     })
+		     .show();
 		}
 
 		@Override

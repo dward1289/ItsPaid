@@ -47,11 +47,13 @@ public class SurveyPage extends Activity {
 		
 		//Create new web view client to handle progress bar.
         surveyView.setWebChromeClient(new theWebViewClient());
+       
 
         progress.setMax(100);
-        progress.setBackgroundColor(Color.rgb(85,107,47));
+        progress.setBackgroundColor(Color.WHITE);
         
         surveyView.getSettings().setJavaScriptEnabled(true);
+        
 		surveyView.loadUrl("https://docs.google.com/forms/d/1DtMAiwbnPL_7Jt2lUnjkoxUdCktflG77zSe3m0G4uqI/viewform");
 
         SurveyPage.this.progress.setProgress(0);

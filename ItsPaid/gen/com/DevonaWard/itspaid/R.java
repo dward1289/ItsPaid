@@ -8,10 +8,6 @@
 package com.DevonaWard.itspaid;
 
 public final class R {
-    public static final class array {
-        public static final int day_array=0x7f060001;
-        public static final int month_array=0x7f060000;
-    }
     public static final class attr {
     }
     public static final class dimen {
@@ -21,53 +17,53 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
         public static final int aboutit=0x7f020000;
         public static final int acancel=0x7f020001;
-        public static final int arefresh=0x7f020002;
-        public static final int bkgrd=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int itspaidlogo=0x7f020005;
-        public static final int listit=0x7f020006;
-        public static final int mglogo=0x7f020007;
-        public static final int thepause=0x7f020008;
-        public static final int theplay=0x7f020009;
-        public static final int thestop=0x7f02000a;
+        public static final int addit=0x7f020002;
+        public static final int arefresh=0x7f020003;
+        public static final int bkgrd=0x7f020004;
+        public static final int clockit=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int itspaidlogo=0x7f020007;
+        public static final int listit=0x7f020008;
+        public static final int mglogo=0x7f020009;
+        public static final int playit=0x7f02000a;
+        public static final int thepause=0x7f02000b;
+        public static final int theplay=0x7f02000c;
+        public static final int thestop=0x7f02000d;
     }
     public static final class id {
-        public static final int aboutIt=0x7f09001d;
+        public static final int aboutIt=0x7f090019;
+        public static final int addBills=0x7f090018;
         public static final int amountPaid=0x7f090003;
         public static final int billName=0x7f090001;
-        public static final int cancelBtn=0x7f090017;
-        public static final int daySpin=0x7f090008;
+        public static final int cancelBtn=0x7f090013;
+        public static final int dateIt=0x7f090007;
         public static final int enterAP=0x7f090002;
         public static final int enterBN=0x7f090000;
         public static final int enterTAD=0x7f090004;
-        public static final int list=0x7f090010;
-        public static final int monthSpin=0x7f090007;
-        public static final int paidFull=0x7f09000a;
-        public static final int paidFullTxt=0x7f09000e;
-        public static final int pfBtn=0x7f090016;
-        public static final int progressBar=0x7f09001a;
-        public static final int radioGroup=0x7f09000b;
-        public static final int radioNo=0x7f09000d;
-        public static final int radioYes=0x7f09000c;
-        public static final int refreshBtn=0x7f090019;
-        public static final int saveBtn=0x7f09000f;
-        public static final int savedBills=0x7f09001c;
-        public static final int theText=0x7f090018;
+        public static final int imageButton1=0x7f090008;
+        public static final int list=0x7f09000b;
+        public static final int paidFullTxt=0x7f090009;
+        public static final int pfBtn=0x7f090012;
+        public static final int playBtn=0x7f09000d;
+        public static final int progressBar=0x7f090016;
+        public static final int refreshBtn=0x7f090015;
+        public static final int saveBtn=0x7f09000a;
+        public static final int savedBills=0x7f09001a;
+        public static final int theText=0x7f090014;
         public static final int totalDue=0x7f090005;
-        public static final int txtAN=0x7f090012;
-        public static final int txtD=0x7f090015;
-        public static final int txtDC=0x7f090014;
+        public static final int txtAN=0x7f09000e;
+        public static final int txtD=0x7f090011;
+        public static final int txtDC=0x7f090010;
         public static final int txtInstruct=0x7f090006;
-        public static final int txtV=0x7f090013;
-        public static final int videoView=0x7f090011;
-        public static final int webview=0x7f09001b;
-        public static final int yearSpin=0x7f090009;
+        public static final int txtV=0x7f09000f;
+        public static final int videoView=0x7f09000c;
+        public static final int webview=0x7f090017;
     }
     public static final class layout {
         public static final int activity_main_page=0x7f030000;
@@ -76,35 +72,39 @@ public final class R {
         public static final int thesurvey_page=0x7f030003;
     }
     public static final class menu {
-        public static final int main_page=0x7f080000;
+        public static final int add_menu=0x7f080000;
+        public static final int main_page=0x7f080001;
+    }
+    public static final class raw {
+        public static final int tutorial=0x7f040000;
     }
     public static final class string {
-        public static final int AP=0x7f050003;
-        public static final int APHint=0x7f05000a;
-        public static final int InstructDate=0x7f050005;
-        public static final int N=0x7f050008;
-        public static final int NOB=0x7f050002;
-        public static final int NOBHint=0x7f050009;
-        public static final int PF=0x7f050011;
-        public static final int PIF=0x7f050006;
-        public static final int TAD=0x7f050004;
-        public static final int TADHint=0x7f05000b;
-        public static final int Y=0x7f050007;
-        public static final int about=0x7f05000e;
-        public static final int action_settings=0x7f050001;
-        public static final int app_name=0x7f050000;
-        public static final int cBtn=0x7f050018;
-        public static final int reBtn=0x7f050019;
-        public static final int save=0x7f05000c;
-        public static final int saved=0x7f05000d;
-        public static final int theD=0x7f050014;
-        public static final int theDC=0x7f050013;
-        public static final int thePause=0x7f050017;
-        public static final int thePlay=0x7f050016;
-        public static final int theStop=0x7f050015;
-        public static final int theSurvey=0x7f05000f;
-        public static final int theV=0x7f050012;
-        public static final int thelogo=0x7f050010;
+        public static final int AP=0x7f060003;
+        public static final int APHint=0x7f06000b;
+        public static final int InstructDate=0x7f060005;
+        public static final int N=0x7f060008;
+        public static final int NOB=0x7f060002;
+        public static final int NOBHint=0x7f06000a;
+        public static final int PF=0x7f060012;
+        public static final int PIF=0x7f060006;
+        public static final int TAD=0x7f060004;
+        public static final int TADHint=0x7f06000c;
+        public static final int Y=0x7f060007;
+        public static final int about=0x7f06000f;
+        public static final int action_settings=0x7f060001;
+        public static final int app_name=0x7f060000;
+        public static final int cBtn=0x7f060018;
+        public static final int hintDate=0x7f060017;
+        public static final int playB=0x7f060009;
+        public static final int reBtn=0x7f060019;
+        public static final int save=0x7f06000d;
+        public static final int saved=0x7f06000e;
+        public static final int theD=0x7f060015;
+        public static final int theDC=0x7f060014;
+        public static final int theDate=0x7f060016;
+        public static final int theSurvey=0x7f060010;
+        public static final int theV=0x7f060013;
+        public static final int thelogo=0x7f060011;
     }
     public static final class style {
         /** 

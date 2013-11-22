@@ -144,12 +144,13 @@ public class MainPage extends Activity {
          if(billName.getText().toString().trim().equals("")){
         	 new AlertDialog.Builder(this)
              .setTitle("It's Paid")
-             .setMessage("Please enter bill name.")
+             .setMessage("Please enter bill name, of the bill will be called Bill Unnamed.")
              .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                  public void onClick(DialogInterface dialog, int which) { 
                  }
          	     })
          	     .show();
+        	 nameofBill = "Bill Unnamed";
       	   
          }else{
         	 nameofBill = (String) billName.getText().toString();
@@ -158,12 +159,13 @@ public class MainPage extends Activity {
          if(amountPaid.getText().toString().trim().equals("")){
         	 new AlertDialog.Builder(this)
              .setTitle("It's Paid")
-             .setMessage("Please enter amount paid.")
+             .setMessage("Please enter amount paid, or the default amount will be 0.")
              .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                  public void onClick(DialogInterface dialog, int which) { 
                  }
          	     })
          	     .show();
+        	 paidAmount = "0";
       		
       	   }else{
       		 paidAmount = (String) amountPaid.getText().toString();     		 
@@ -171,13 +173,14 @@ public class MainPage extends Activity {
       		   
          if(totalDue.getText().toString().trim().equals("")){
         	 new AlertDialog.Builder(this)
-	           .setTitle("It's Paid")
-	           .setMessage("Please enter total amount due.")
-	           .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-	               public void onClick(DialogInterface dialog, int which) { 
-	               }
-	       	     })
-	       	     .show();
+             .setTitle("It's Paid")
+             .setMessage("Please enter amount due, or the default amount will be 0.")
+             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                 public void onClick(DialogInterface dialog, int which) { 
+                 }
+         	     })
+         	     .show();
+        	   dueAmount = "0";
       	   
       		   }else{
       			 dueAmount = (String)totalDue.getText().toString();
@@ -197,20 +200,21 @@ public class MainPage extends Activity {
          }else{
   			 selectedDate = (String)dateSel.getText().toString();
 	       }
-         
-         
-        	thatPaid = Double.parseDouble(paidAmount);
-     		thatOwed = Double.parseDouble(dueAmount);
-     		thatTotal = thatOwed - thatPaid;
-     		if(thatTotal == 0){
-      	   paidInFull.setText("Paid in full on "+selectedDate);   
-        		savedtheData(); 
-        		theNotification();
-     		}else{ 			
-          			paidInFull.setText("$"+decimalFormat.format(thatTotal)+" is due by "+selectedDate);   
-             		savedtheData();
-             		theNotification();
-          		}     		       
+          		
+     		if(nameofBill != "Bill Unnamed" || nameofBill != null){
+     			if(selectedDate != null){
+     				thatPaid = Double.parseDouble(paidAmount);
+     	     		thatOwed = Double.parseDouble(dueAmount);
+     	     		thatTotal = thatOwed - thatPaid;
+     	     		if(thatTotal == 0){
+     	      	   paidInFull.setText("Paid in full on "+selectedDate);   
+     	     		}else{ 			
+     	          			paidInFull.setText("$"+decimalFormat.format(thatTotal)+" is due by "+selectedDate);   
+     	          		} 
+     				savedtheData(); 
+            		theNotification();
+     			}
+     		}
       }
       
       

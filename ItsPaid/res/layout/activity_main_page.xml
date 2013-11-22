@@ -100,7 +100,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="90dp"
-            android:text="@string/hintDate"
             android:textSize="18sp" />
 
         <ImageButton
